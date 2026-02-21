@@ -341,10 +341,22 @@ nav {
     border-color: var(--accent);
 }
 
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-subtitle {
+    color: var(--text-dim);
+    font-size: 1rem;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
 .section-title.centered {
     text-align: center;
-    margin-bottom: 80px;
-    padding-top: 40px; /* Prevent overlap with nav */
+    margin-bottom: 20px;
+    padding-top: 40px;
 }
 
 /* Redesigned Work Section */
@@ -369,37 +381,54 @@ nav {
     transition: var(--transition);
 }
 
-.category-tab.active, .category-tab:hover {
+.category-tab.active, .category-tab:hover, .category-tab.drag-over {
     background: var(--accent);
     color: var(--bg);
     border-color: var(--accent);
     box-shadow: 0 0 20px var(--accent-glow);
 }
 
+.category-tab.drag-over {
+    transform: scale(1.1);
+}
+
+.work-item.dragging {
+    opacity: 0.4 !important;
+    border: 2px dashed var(--accent);
+}
+
+.work-item.dragging iframe, 
+.work-item.dragging .work-overlay {
+    pointer-events: none;
+}
+
 .work-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for better density */
+    gap: 25px;
 }
 
 .work-item {
     position: relative;
-    border-radius: 24px;
+    border-radius: 18px;
     overflow: hidden;
     background: #000;
     aspect-ratio: 16/9;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     transition: var(--transition);
 }
 
 .work-item.vertical {
-    aspect-ratio: 9/16;
+    aspect-ratio: 9/16; /* Standard mobile ratio */
+    grid-row: span 2; 
+    max-width: 260px; /* Restrict width to make them smaller */
+    margin: 0 auto; /* Center within the grid column */
 }
 
 .work-item:hover {
     border-color: var(--accent);
-    transform: scale(1.02);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.9), 0 0 30px var(--accent-glow);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.8), 0 0 15px var(--accent-glow);
 }
 
 .work-overlay {
@@ -407,13 +436,22 @@ nav {
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 30px;
+    padding: 20px;
     background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 100%);
     opacity: 0;
     transform: translateY(10px);
     transition: var(--transition);
     pointer-events: none;
     z-index: 5;
+}
+
+@media (max-width: 1100px) {
+    .work-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .work-grid { grid-template-columns: 1fr; }
+    .work-item.vertical { grid-row: auto; aspect-ratio: 9/16; }
 }
 
 .work-item:hover .work-overlay {

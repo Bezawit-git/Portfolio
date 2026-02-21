@@ -83,33 +83,121 @@ magneticBtns.forEach(btn => {
 const categoryTabs = document.querySelectorAll('.category-tab');
 const workItems = document.querySelectorAll('.work-item');
 
+function updateFilter() {
+    const activeTab = document.querySelector('.category-tab.active');
+    const filter = activeTab.getAttribute('data-filter');
+
+    workItems.forEach(item => {
+        const category = item.getAttribute('data-category');
+        
+        if (filter === 'all' || category === filter) {
+            item.style.display = 'block';
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0) scale(1)';
+            }, 10);
+        } else {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px) scale(0.95)';
+            setTimeout(() => {
+                item.style.display = 'none';
+            }, 400);
+        }
+    });
+}
+
 categoryTabs.forEach(tab => {
     tab.addEventListener('click', () => {
-        // Update active tab UI
         categoryTabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
+        updateFilter();
+    });
 
-        const filter = tab.getAttribute('data-filter');
+    // Drag and Drop Logic for Category Tabs
+    tab.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        if (tab.getAttribute('data-filter') !== 'all') {
+            tab.classList.add('drag-over');
+        }
+    });
 
-        workItems.forEach(item => {
-            const category = item.getAttribute('data-category');
+    tab.addEventListener('dragleave', () => {
+        tab.classList.remove('drag-over');
+    });
+
+    tab.addEventListener('drop', (e) => {
+        e.preventDefault();
+        tab.classList.remove('drag-over');
+        
+        const itemId = e.dataTransfer.getData('text/plain');
+        const draggedItem = document.getElementById(itemId);
+        const newCategory = tab.getAttribute('data-filter');
+
+        if (newCategory !== 'all') {
+            draggedItem.setAttribute('data-category', newCategory);
             
-            if (filter === 'all' || category === filter) {
-                item.style.display = 'block';
-                setTimeout(() => {
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateY(0) scale(1)';
-                }, 10);
-            } else {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(20px) scale(0.95)';
-                setTimeout(() => {
-                    item.style.display = 'none';
-                }, 400);
-            }
-        });
+            // Persist the change
+            saveWorkCategories();
+            
+            // Re-filter if we are in a specific view
+            updateFilter();
+            
+            console.log(`Moved ${itemId} to ${newCategory}`);
+        }
     });
 });
+
+// Drag and Drop Logic for Work Items
+workItems.forEach(item => {
+    // Create a transparent drag handle to avoid iframe interference
+    const handle = document.createElement('div');
+    handle.className = 'drag-handle';
+    handle.style.position = 'absolute';
+    handle.style.top = '0';
+    handle.style.left = '0';
+    handle.style.width = '100%';
+    handle.style.height = '100%';
+    handle.style.zIndex = '10'; // Above iframe but below overlay text on hover
+    handle.style.cursor = 'grab';
+    item.appendChild(handle);
+
+    item.addEventListener('dragstart', (e) => {
+        item.classList.add('dragging');
+        e.dataTransfer.setData('text/plain', item.id);
+        // Ensure the drag image is visible
+        setTimeout(() => {
+            item.style.opacity = '0.4';
+        }, 0);
+    });
+
+    item.addEventListener('dragend', () => {
+        item.classList.remove('dragging');
+        item.style.opacity = '1';
+    });
+});
+
+function saveWorkCategories() {
+    const mapping = {};
+    workItems.forEach(item => {
+        mapping[item.id] = item.getAttribute('data-category');
+    });
+    localStorage.setItem('portfolio_cat_mapping', JSON.stringify(mapping));
+}
+
+function loadWorkCategories() {
+    const savedMapping = localStorage.getItem('portfolio_cat_mapping');
+    if (savedMapping) {
+        const mapping = JSON.parse(savedMapping);
+        Object.keys(mapping).forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.setAttribute('data-category', mapping[id]);
+        });
+    }
+}
+
+// Initial Load
+loadWorkCategories();
+updateFilter();
 // Profile Picture Edit Logic
 const profileEditTrigger = document.getElementById('profileEditTrigger');
 const profileInput = document.getElementById('profileInput');

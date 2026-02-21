@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0028)http://localhost:3000/#about -->
+<!-- saved from url=(0040)https://bezawit-git.github.io/Portfolio/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +12,8 @@
 </head>
 <body>
     <!-- Premium Elements -->
-    <div class="cursor" style="transform: translate3d(688.5px, 313.5px, 0px); background: white;"></div>
-    <div class="cursor-follower" style="transform: translate3d(677.329px, 302.242px, 0px); border-color: var(--text-dim);"></div>
+    <div class="cursor" style="transform: translate3d(780.5px, -4.5px, 0px);"></div>
+    <div class="cursor-follower" style="transform: translate3d(742.53px, -3.82907px, 0px);"></div>
     <div class="bg-mesh"></div>
     <div class="bg-blobs">
         <div class="blob"></div>
@@ -23,9 +23,9 @@
     <nav>
         <div class="logo">BEZAWIT FIKIRE</div>
         <ul class="nav-links">
-            <li><a href="http://localhost:3000/#work">Work</a></li>
-            <li><a href="http://localhost:3000/#about">Story</a></li>
-            <li><a href="http://localhost:3000/#contact">Contact</a></li>
+            <li><a href="https://bezawit-git.github.io/Portfolio/#work">Work</a></li>
+            <li><a href="https://bezawit-git.github.io/Portfolio/#about">Story</a></li>
+            <li><a href="https://bezawit-git.github.io/Portfolio/#contact">Contact</a></li>
         </ul>
     </nav>
 
@@ -35,8 +35,8 @@
                 <h1>I TURN IDEAS<br>INTO <span>ENGAGING</span><br>VISUAL STORIES</h1>
                 <p>Social Media Growth Focused | Short-Form Content Specialist | Information Systems Student</p>
                 <div class="hero-cta">
-                    <a href="http://localhost:3000/#work" class="btn btn-primary" style="transform: translate(0px, 0px);">EXPLORE WORK</a>
-                    <a href="http://localhost:3000/#contact" class="btn btn-secondary">HIRE ME</a>
+                    <a href="https://bezawit-git.github.io/Portfolio/#work" class="btn btn-primary">EXPLORE WORK</a>
+                    <a href="https://bezawit-git.github.io/Portfolio/#contact" class="btn btn-secondary">HIRE ME</a>
                 </div>
             </div>
         </section>
@@ -98,66 +98,77 @@
         </section>
 
         <section id="work" class="section" style="opacity: 0; transform: translateY(50px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1);">
-            <h2 class="section-title centered">FEATURED<br>SHOWREELS</h2>
+            <div class="section-header">
+                <h2 class="section-title centered">SELECTED<br>PROJECTS</h2>
+                <p class="section-subtitle">Showing a curation of my best visual compositions.</p>
+            </div>
             
             <div class="work-categories">
-                <button class="category-tab active" data-filter="all">All Works</button>
-                <button class="category-tab" data-filter="shortform">Short-Form / Reels</button>
-                <button class="category-tab" data-filter="cinematic">Cinematic &amp; YouTube</button>
-                <button class="category-tab" data-filter="commercial">Commercial &amp; Ads</button>
+                <button class="category-tab active" data-filter="all">All Projects</button>
+                <button class="category-tab" data-filter="shortform">Social / Reels</button>
+                <button class="category-tab" data-filter="cinematic">Narrative / YT</button>
+                <button class="category-tab" data-filter="commercial">Ads / Promo</button>
             </div>
 
+            <!-- 
+              HOW TO ADD MORE WORKS:
+              1. Copy one of the <div class="work-item"> blocks below.
+              2. Change the 'data-category' to: 'shortform', 'cinematic', or 'commercial'.
+              3. Replace the <iframe> 'src' with your YouTube/Drive link.
+              4. Add 'vertical' class to the div if it's a 9:16 Reel/TikTok.
+            -->
+
             <div class="work-grid">
-                <!-- Short-Form / Reels (Vertical) -->
-                <div class="work-item vertical" data-category="shortform" style="opacity: 0; transform: translateY(50px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1);">
+                <!-- Short-Form / Reels -->
+                <div class="work-item vertical" id="work-1" data-category="shortform" draggable="true" style="opacity: 1; transform: translateY(0px) scale(1); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); display: block;">
                     <iframe src="./Bezawit Fikire _ Creative Video Architect_files/preview.html" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen=""></iframe>
                     <div class="work-overlay">
                         <h3>CINEMATIC REEL</h3>
-                        <p>Short-Form / Vertical</p>
+                        <p>Short-Form</p>
                     </div>
-                </div>
+                <div class="drag-handle" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 10; cursor: grab;"></div></div>
 
-                <div class="work-item vertical" data-category="shortform" style="opacity: 0; transform: translateY(50px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1);">
+                <div class="work-item vertical" id="work-2" data-category="shortform" draggable="true" style="opacity: 1; transform: translateY(0px) scale(1); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); display: block;">
                     <iframe src="./Bezawit Fikire _ Creative Video Architect_files/preview(1).html" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen=""></iframe>
                     <div class="work-overlay">
                         <h3>LIFESTYLE REEL</h3>
-                        <p>Short-Form / Vertical</p>
+                        <p>Short-Form</p>
                     </div>
-                </div>
+                <div class="drag-handle" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 10; cursor: grab;"></div></div>
 
-                <div class="work-item vertical" data-category="shortform" style="opacity: 0; transform: translateY(50px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1);">
+                <div class="work-item vertical" id="work-3" data-category="shortform" draggable="true" style="opacity: 1; transform: translateY(0px) scale(1); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); display: block;">
                     <iframe src="./Bezawit Fikire _ Creative Video Architect_files/preview(2).html" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen=""></iframe>
                     <div class="work-overlay">
                         <h3>CREATIVE SHOWCASE</h3>
-                        <p>Short-Form / Vertical</p>
+                        <p>Short-Form</p>
                     </div>
-                </div>
+                <div class="drag-handle" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 10; cursor: grab;"></div></div>
 
-                <!-- Cinematic & YouTube (Landscape) -->
-                <div class="work-item" data-category="cinematic" style="opacity: 0; transform: translateY(50px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1);">
+                <!-- Cinematic & YouTube -->
+                <div class="work-item" id="work-4" data-category="cinematic" draggable="true" style="opacity: 1; transform: translateY(0px) scale(1); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); display: block;">
                     <iframe src="./Bezawit Fikire _ Creative Video Architect_files/oSBawPcvTrA.html" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
                     <div class="work-overlay">
                         <h3>NARRATIVE EDIT</h3>
-                        <p>Cinematic / YouTube</p>
+                        <p>Cinematic</p>
                     </div>
-                </div>
+                <div class="drag-handle" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 10; cursor: grab;"></div></div>
 
-                <!-- Commercial & Ads (Landscape) -->
-                <div class="work-item" data-category="commercial" style="opacity: 0; transform: translateY(50px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1);">
+                <!-- Commercial & Ads -->
+                <div class="work-item" id="work-5" data-category="commercial" draggable="true" style="opacity: 1; transform: translateY(0px) scale(1); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); display: block;">
                     <iframe src="./Bezawit Fikire _ Creative Video Architect_files/BWFqRg8IPEM.html" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
                     <div class="work-overlay">
                         <h3>SOCIAL AD</h3>
-                        <p>Commercial / Branding</p>
+                        <p>Commercial</p>
                     </div>
-                </div>
+                <div class="drag-handle" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 10; cursor: grab;"></div></div>
 
-                <div class="work-item" data-category="commercial" style="opacity: 0; transform: translateY(50px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1);">
+                <div class="work-item" id="work-6" data-category="commercial" draggable="true" style="opacity: 1; transform: translateY(0px) scale(1); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); display: block;">
                     <iframe src="./Bezawit Fikire _ Creative Video Architect_files/SPZUh148HO0.html" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
                     <div class="work-overlay">
                         <h3>BRAND STORY</h3>
-                        <p>Commercial / Ads</p>
+                        <p>Commercial</p>
                     </div>
-                </div>
+                <div class="drag-handle" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 10; cursor: grab;"></div></div>
             </div>
         </section>
 

@@ -195,13 +195,18 @@ function loadWorkCategories() {
     }
 }
 
-// Initial Load
-loadWorkCategories();
-updateFilter();
 // Profile Picture Edit Logic
 const profileEditTrigger = document.getElementById('profileEditTrigger');
 const profileInput = document.getElementById('profileInput');
 const displayProfileImg = document.getElementById('displayProfileImg');
+
+// Load saved profile image on startup
+function loadProfileImage() {
+    const savedImg = localStorage.getItem('portfolio_profile_img');
+    if (savedImg && displayProfileImg) {
+        displayProfileImg.src = savedImg;
+    }
+}
 
 if (profileEditTrigger && profileInput) {
     profileEditTrigger.addEventListener('click', () => {
@@ -213,10 +218,23 @@ if (profileEditTrigger && profileInput) {
         if (file) {
             const reader = new FileReader();
             reader.onload = (event) => {
-                displayProfileImg.src = event.target.result;
-                console.log('Profile image updated locally');
+                const base64Image = event.target.result;
+                displayProfileImg.src = base64Image;
+                
+                // Save to localStorage for persistence
+                try {
+                    localStorage.setItem('portfolio_profile_img', base64Image);
+                    console.log('Profile image saved to persistence');
+                } catch (err) {
+                    console.error('Error saving image: Large files might exceed localStorage limits', err);
+                }
             };
             reader.readAsDataURL(file);
         }
     });
 }
+
+// Initial Load
+loadWorkCategories();
+loadProfileImage();
+updateFilter();
